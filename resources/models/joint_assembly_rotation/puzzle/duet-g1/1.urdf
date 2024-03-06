@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot name="double_alpha">
+
+  <!-- Define the visual and collision properties of the object -->
+  <link name="double_alpha">
+    <contact>
+        <lateral_friction value="10.0"/>
+        <rolling_friction value="0.5"/>
+        <contact_cfm value="1.0"/>
+        <contact_erp value="1.0"/>
+    </contact>
+
+    <visual>
+      <geometry>
+        <mesh filename="resources/models/joint_assembly_rotation/puzzle/duet-g1/1.obj" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="resources/models/joint_assembly_rotation/puzzle/duet-g1/1.obj" />
+      </geometry>
+    </collision>
+
+    <inertial>
+         <mass value="0.0"/>
+          <dampingFactor>0.9</dampingFactor>
+         <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.02"/>
+    </inertial>
+  </link>
+
+</robot>

@@ -1,0 +1,21 @@
+{
+    "abc_light": "./resources/models/joint_assembly_rotation/puzzle/abc_light",
+    "aj": "./resources/models/joint_assembly_rotation/puzzle/aj",
+    "alpha": "./resources/models/joint_assembly_rotation/puzzle/alpha",
+    "az": "./resources/models/joint_assembly_rotation/puzzle/az",
+    "doublealpha": "./resources/models/joint_assembly_rotation/puzzle/doublealpha",
+    "duet-g1": "./resources/models/joint_assembly_rotation/puzzle/duet-g1",
+    "key_light_1": "./resources/models/joint_assembly_rotation/puzzle/key_light_1",
+    "mobius_light": "./resources/models/joint_assembly_rotation/puzzle/mobius_light",
+
+    "06397": "./resources/models/joint_assembly_rotation/general/06397",
+    "07631": "./resources/models/joint_assembly_rotation/general/07631",
+    "08862": "./resources/models/joint_assembly_rotation/general/08862",
+    "09301": "./resources/models/joint_assembly_rotation/general/09301",
+    "11019": "./resources/models/joint_assembly_rotation/general/11019",
+    "11356": "./resources/models/joint_assembly_rotation/general/11356",
+    "11780": "./resources/models/joint_assembly_rotation/general/11780",
+    "16505": "./resources/models/joint_assembly_rotation/general/16505",
+
+    "alpha-org": "./resources/models/joint_assembly_rotation/puzzle/alpha-org"
+}
