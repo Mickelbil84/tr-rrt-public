@@ -1,5 +1,7 @@
 # Touch & Roll Rapidly Exploring Random Trees (TR-RRT) #
 
+![Results](https://raw.githubusercontent.com/TAU-CGL/tr-rrt-public/main/resources/results.gif?raw=true)
+
 Implementation of our paper, "Tight Motion Planning by Riemannian Optimization for Sliding and Rolling with Finite Number of Contact Points". 
 
 The supplementary material PDF can be found in the root of this repository.
