@@ -44,6 +44,7 @@ This research sheds light on effective approaches to address motion planning dif
 
 All scripts can be found under the `scripts` folder.
 
-* To fit an SDF: `scripts/fit.py`
+* To fit an SDF grid and save it as `npz`: `scripts/build_sdf.py`
+* To fit a neural SDF (legacy): `scripts/fit.py`
 * To run our solver on an instance: `scripts/run_test.py`
 * To view the path solution as an animation: `scripts/visualize_path.py`
