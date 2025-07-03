@@ -2,8 +2,8 @@ import time
 
 import trimesh
 import numpy as np
-import pybullet as p
-import pybullet_data
+# import pybullet as p
+# import pybullet_data
 from spatialmath import SE3
 
 from .sdf import *

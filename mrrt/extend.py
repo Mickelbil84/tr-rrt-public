@@ -57,7 +57,7 @@ def get_tangent_direction_wiggle(v: np.array,
                           m1: SDFMesh, q1: np.array,
                           m2: SDFMesh, q2: np.array, eta: float,
                           eps_contact: float, eps_cluster: float,
-                          device: torch.device):
+                          device):
     """
     Get a direction v in R6, and return v' which is approximately tangent to the most penetrating two contact points
     """
@@ -97,7 +97,7 @@ def get_tangent_direction_affinity(v: np.array,
                           m1: SDFMesh, q1: np.array,
                           m2: SDFMesh, q2: np.array,
                           eps_contact: float, eps_cluster: float,
-                          device: torch.device):
+                          device):
     """
     Get a direction v in R6, and return v' in TpM
     (where M is the critical manifold for k contact points)
@@ -174,7 +174,7 @@ def get_tangent_direction_kmeans(v: np.array,
                           m1: SDFMesh, q1: np.array,
                           m2: SDFMesh, q2: np.array,
                           eps_contact: float, eps_cluster: float,
-                          device: torch.device):
+                          device):
     """
     Get a direction v in R6, and return v' in TpM
     (where M is the critical manifold for k contact points)
@@ -222,7 +222,7 @@ def get_tangent_direction_kmeans(v: np.array,
 def retract(m1: SDFMesh, q1: np.array, 
             m2: SDFMesh, q2: np.array, 
             eps_contact: float, eps_cluster: float, lr: float, steps: int,
-            device: torch.device, bv, threshold):
+            device, bv, threshold):
     """
     Retract a vector on TM onto the manifold M
     """

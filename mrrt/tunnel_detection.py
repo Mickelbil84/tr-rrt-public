@@ -12,7 +12,7 @@ def is_tunnel(
         m1: SDFMesh, q1: np.array, 
         m2: SDFMesh, q2: np.array, 
         delta: float, eps_contact: float, eps_cluster: float,
-        device: torch.device):
+        device):
     """
     Check if M2, when placed in q2, is in a "tunnel", i.e., has very constrained degrees of freedom.
     """
