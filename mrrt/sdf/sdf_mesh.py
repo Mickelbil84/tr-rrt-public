@@ -1,5 +1,6 @@
 import numpy as np
 import trimesh
+import mcubes
 
 
 class SDFMesh:
@@ -61,3 +62,36 @@ class SDFMesh:
         c0 = c00 * (1 - ty) + c10 * ty
         c1 = c01 * (1 - ty) + c11 * ty
         return c0 * (1 - tz) + c1 * tz
+
+    def fit(self, voxel_size=0.01, padding=0.1):
+        """Compute an SDF grid for the mesh and save it as ``mesh_path.npz``."""
+        self.mesh = trimesh.load(self.mesh_path)
+        bounds = self.mesh.bounds
+        b_min = bounds[0] - padding
+        b_max = bounds[1] + padding
+
+        xs = np.arange(b_min[0], b_max[0] + voxel_size, voxel_size)
+        ys = np.arange(b_min[1], b_max[1] + voxel_size, voxel_size)
+        zs = np.arange(b_min[2], b_max[2] + voxel_size, voxel_size)
+
+        grid = np.stack(np.meshgrid(xs, ys, zs, indexing='ij'), axis=-1)
+        points = grid.reshape(-1, 3)
+
+        pq = trimesh.proximity.ProximityQuery(self.mesh)
+        sdf_vals = pq.signed_distance(points)
+        self.sdf = sdf_vals.reshape(grid.shape[:3])
+
+        self.origin = np.array([xs[0], ys[0], zs[0]], dtype=np.float32)
+        self.voxel_size = float(voxel_size)
+        np.savez(self.mesh_path + '.npz', sdf=self.sdf, origin=self.origin,
+                 voxel_size=self.voxel_size)
+
+    def to_mesh(self, export_path, level=0.0):
+        """Export the SDF grid as a mesh using marching cubes."""
+        if self.sdf is None:
+            raise ValueError('SDF grid was not loaded')
+        vertices, triangles = mcubes.marching_cubes(self.sdf, level)
+        vertices = vertices * self.voxel_size + self.origin
+        mesh = trimesh.Trimesh(vertices, triangles)
+        mesh.export(export_path)
+        return mesh
