@@ -1,6 +1,6 @@
-from mrrt.sdf import *
-from mrrt.rrt import *
-from mrrt.visualize import *
+from mrrt.sdf import SDFMesh
+from mrrt.rrt import RRT
+from mrrt.visualize import BulletVisualization
 
 import os
 import time
@@ -19,16 +19,9 @@ if not os.path.isdir(BASE_RESULTS_DIR):
 
 
 ###############
-# Setup torch
+# Setup device placeholder
 ###############
-MACOS_USE_MPS = False
-if platform.system() == "Darwin" and MACOS_USE_MPS:
-    # Test for M1 GPUs
-    device = torch.device('mps' if torch.backends.mps.is_available() and torch.backends.mps.is_built() else 'cpu')
-else:
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-print(device)
+device = None
 
 ###############
 # Setup args

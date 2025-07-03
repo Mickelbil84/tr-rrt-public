@@ -1,6 +1,8 @@
-from .sdf import *
+import numpy as np
 
-def distance_between_objects(mesh1, q1, mesh2, q2, device, single_direction=False):
+from .sdf import signed_distance
+
+def distance_between_objects(mesh1, q1, mesh2, q2, device=None, single_direction=False):
     """
     actual distance between two pieces (mesh1, mesh2) when located in configurations q1 and q2 respectively
     :param mesh1:
@@ -9,7 +11,7 @@ def distance_between_objects(mesh1, q1, mesh2, q2, device, single_direction=Fals
     :param q2:
     :return: float. distance between units
     """
-    return signed_distance(mesh1, xyzrpy_2_SE3(q1), mesh2, xyzrpy_2_SE3(q2), device, single_direction)
+    return signed_distance(mesh1, q1, mesh2, q2, single_direction)
 
 def distance_between_configurations(q1: list, q2: list):
     """
