@@ -1,13 +1,11 @@
-from .sdf import *
+from .distance import distance_between_objects
+from .rotation_utils import pave_short_edge
 
-from .distance import *
-from .rotation_utils import *
-
-def is_collision(mesh1, q1, mesh2, q2, threshold, device):
-    dist = distance_between_objects(mesh1, q1, mesh2, q2, device)
+def is_collision(mesh1, q1, mesh2, q2, threshold, device=None):
+    dist = distance_between_objects(mesh1, q1, mesh2, q2)
     return dist < threshold
 
-def is_edge_valid(mesh_static, q_static, mesh_dynamic, q_start, q_end, n, threshold, device):
+def is_edge_valid(mesh_static, q_static, mesh_dynamic, q_start, q_end, n, threshold, device=None):
     """
     varify validity (clearance) of n points evenly spread along the edge from q_start to q_end
     :param q_start: starting point (configuration)
@@ -18,7 +16,6 @@ def is_edge_valid(mesh_static, q_static, mesh_dynamic, q_start, q_end, n, thresh
     qs = pave_short_edge(q_start, q_end, n)
 
     for q in qs:
-        if is_collision(mesh_static, q_static, mesh_dynamic, q, threshold, device):
+        if is_collision(mesh_static, q_static, mesh_dynamic, q, threshold):
             return False
-
     return True
